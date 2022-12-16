@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    
+<!--   17 - Concetti generale async  -->
+
+<!-- 
+    1) introduzione all'asyncrono 
+    2) Blocking code : concetto del thread ( processo )
+    3) Thread , js single thread - main thread , worker threads 
+    4) Codice asincrono 
+ -->
+
+
+    <!-- 1) introduzione all'asyncrono : 
+        il codice viene letto dall'alto verso il basso ,
+    -->
+
+    <!-- 2) Blocking code : concetto del thread ( processo ) : 
+        il codice viene definito Blocking code , quando si sta eseguendo una riga e le successive righe non venno eseguite 
+        finche non e finita l'esecuzione della riga attuale , questo prende il nome di processo su cui possiamo lavorare , il processo prende il nome di thread  
+    -->
+
+
+    <!-- 3) Thread , js single thread - main thread , worker threads : 
+        la programmazione asincrono introduce i thread 
+    -->
+
+
+ <button id="date"> vai</button>
+ <button id="alert"> alert</button>
+
+
+ <script>
+ const btn = document.querySelector('#date');
+ const btnAlert = document.querySelector('#alert');
+
+ btn.addEventListener('click' , ()=>{
+    let myDate 
+    for(let i= 0 ; i<100000000;i++){
+        let date = new Date();
+        mydate = date;
+    }
+
+    console.log(myDate)
+
+    let pElem  = document.createElement('p');
+    pElem.textContent = "This is new Added paragraph"
+    document.body.appendChild(pElem);
+
+
+    btnAlert.addEventListener('click' , ()=>{
+        alert('Eccomi');
+    });
+ })
+
+ </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>
