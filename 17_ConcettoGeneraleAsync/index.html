@@ -41,8 +41,15 @@
     -->
 
 
-    <!-- 3) Thread , js single thread - main thread , worker threads : 
-        la programmazione asincrono introduce i thread 
+    <!-- 3) Threads , js single thread - main thread , worker threads : 
+        la programmazione asincrono introduce i thread , javascript e un linguaggio a single thread , ovvero un unico processo 
+        ma nel corso degli anni sono stati aggiunti dei tool affinche potesse supportare piu threads
+        ovvero parliamo del main thread e worker thread : 
+        main thread : quello su cui lavoriamo ad esempio quando premiamo su un bottone , ed e a blocking code 
+        worker thread : sono dei processi dei canali di comunicazione differenti in cui possiamo eseguire delle funzioni ,
+        permettendo al main thread di andare avanti , ad esempio quando si accede ad un sito e nel frattempo il sito scarica del contenuto ,
+        in questo caso abbiamo il main thread che va avanti e i woker thread fanno le operazioni lunghe che altrimenti andrebbero a bloccare tutto il resto ovverro scaricano il contenuto 
+        questa e la base dell'introduzione al concetto di asincrono 
     -->
 
 

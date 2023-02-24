@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <!--   18 - Introduzione pratica asincrono  -->
+
+    <!-- 
+    1) JS sync
+    2) Js async
+    3) async callbacks
+    4) Promises (fetch)
+
+
+
+  
+    
+
+    
+ -->
+
+
+
+    <button id="vai"> vai</button>
+
+
+    <script>
+        const btnVai = document.querySelector('#vai');
+        /*
+        -  1) JS sync: nel codice sincrono quando troviamo un altert il thread si blocca finche il codice detto bloccante non viene risolto,
+        infatti notiamo che non appena l'alert viene risolto viene eseguito il resto della funzione dentro addEventListener
+        */
+
+        btnVai.addEventListener('click', () => {
+            alert('You clicked me!');
+
+            let pElem = document.createElement('p');
+            pElem.textContent = "This is new Added paragraph"
+            document.body.appendChild(pElem);
+
+        });
+
+        // qui va in errore perche il codice sincrono va a richeidere response quando ancora la richiesta e prendete
+        // let response = fetch("https://ak.picdn.net/shutterstock/videos/11773709/thumb/10.jpg");
+        // let blob = response.blob();
+
+
+
+        /*
+        - 2) Js async : codice asincrono agli inizi 
+        */
+
+        function loadAsset(url, type, callback) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.responseType = type;
+
+
+            xhr.onload = function () {
+                callback(xhr.response)
+            };
+
+            xhr.send();
+
+        }
+
+        function displayImage(blob) {
+            let objectUrl = URL.createObjectURL(blob);
+
+            let image = document.createElement('img');
+            image.src = objectUrl;
+            document.body.appendChild(image);
+        }
+
+        loadAsset("https://cdn.mos.cms.futurecdn.net/4MLyNZ66GSMUp7z49Q8k3K-970-80.jpg.webp", "blob", displayImage)
+
+        /*
+        codice asincrono piu semplice ed evoluto , per evitare il codice scritto su possiamo gestire il codice asincrono in modo  
+        piu semplice e corto sono nati fetch e then 
+        */
+
+        fetch('js/classe.json').then(function(response){
+            return response.json();
+        }).then(function(json){
+            classe = json 
+            console.log("Dati :" , classe);
+        }).catch(function (err){
+            console.log("Fetch problem : " , err.message);
+        });
+
+
+
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>

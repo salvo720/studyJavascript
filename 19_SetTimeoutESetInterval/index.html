@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <!--   19 - Set Timeout e Set Interval  -->
+    <!--   19_SetTimeoutESetInterval  -->
+
+    <!-- 
+    1) setTimeout (funzione , tempo di attessa ) e clearTimeout()
+    2) setIntervarl e clearInterval()
+
+    setTimeout vs  setIntervarl qual e la differenza ? 
+    - setTimeout e un tempo di attesa del programma che non viene ripetuto nel tempo
+    - setIntervarl e un intervall di attessa che si ripete nel tempo 
+
+  
+    
+
+    
+ -->
+
+
+
+ <button id="primo"> primo</button>
+ <button id="secondo"> secondo</button>
+    
+    <p id="demo"> Orologio : </p>
+
+
+    <script>
+
+        let prova = setTimeout(saluta, 5000);
+        const btnPrimo = document.getElementById('primo');
+        const btnSecondo = document.querySelector('secondo');
+
+        function saluta() {
+            alert("ciao sono in timeout");
+        }
+
+        btnPrimo.addEventListener('click', () => {
+            clearTimeout(prova);
+        });
+
+
+        function displayTime() {
+            let date = new Date();
+            console.log(date);
+            let time = date.toLocaleDateString();
+            document.getElementById('demo').textContent = time;
+        }
+
+        const createClock = setInterval(displayTime, 1000) // nel setInterval il numero in millisecondi indica ogni quanto eseguire qullo passato al setInterval 
+        
+        btnSecondo.addEventListener('click', () => {
+            clearTimeout(createClock);
+        });
+
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>
