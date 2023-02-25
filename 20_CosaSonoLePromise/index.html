@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <!--   20 - Cosa sono le promise  -->
+
+    <!-- 
+    1) Cosa sono le promise 
+    2) il problema con le callback
+    3) il miglioramento tramite il promise 
+    4) la sintassi del promise 
+    5) Risposta in caso di fallimento
+    6) Chaining
+    7) Costruttore promise custom
+    8) Rifuitare una promise 
+
+
+
+
+    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises );
+
+    
+ -->
+
+
+
+    <button id="primo"> primo</button>
+    <button id="secondo"> secondo</button>
+
+
+    <script>
+        /*
+        - 1) Cosa sono le promise : 
+        la promise e una promesa che noi facciamo di risposta , in modo asincrono e , 
+        si puo dire che e la promessa di qualcosa che viene ritorna in futuro e indica uno state ad esempio quando andiamo a creare una nuova promise lo stato sara : New Promise Pending  
+        */
+
+
+        /* come sarebbe javascrip senza la sintassi promise 
+
+        chooseToppings(function (toppings) {
+            placeOrder(toppings, function (order) {
+                colletOrder(order, function (pizza) {
+                    eatPizza(pizza);
+                }, failureCallback);
+            }, failureCallback);
+        }, failureCallback);
+
+        */
+
+        /*
+        - 3) il miglioramento tramite il promise :
+        come cambia usando le promise in particole con ES 6 
+        
+        
+        chooseToppings()
+        .then( toppings => placeOrder(toppings))
+        .then( order => colletOrder(order))
+        .then( eatPizza => eatPizza(pizza))
+        .catch(failureCallback);
+
+
+        */
+
+        /*
+         - 4) la sintassi del promise : 
+        
+        
+        */
+
+        fetch("img/universe.jpg")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Http error! status  ${response.status}`)
+                } else {
+                    // blob e un metodo per usare il binary large object e le immagini sono degli elementi pesanti 
+                    return response.blob();
+                    // - 6.1) contenuto ritornato dalla 1 funzione then 
+                }
+            })
+
+            /* 
+            6) Chaining : il chaingin e la concatenazione di metodi dopo la funzione appena esguita , ad esempio fetch().then() .
+            le concatenazioni massime sono infinite .
+            effettuando il chaingin ovverro concatenazione dei then , il contenuto ritornato dalla funzione prima 6.1) , 
+            viene automaticamente passato alla prossima funzione concatenta come parametro 6.2)
+            */
+            .then(myBlob => {
+                // - 6.2) parametro della funzione con valore il return del metodo precedente  
+                let objectUrl = URL.createObjectURL(myBlob);
+                let image = document.createElement('img');
+                image.src = objectUrl;
+                document.body.appendChild(image);
+            })
+            .catch(e => {
+                console.error(` There has been a problem with your fetch operation : ${e.message}`);
+            });
+
+        /*
+        - 7) Costruttore promise custom:
+        per creare un nuovo oggeto di tipo promise ci basta fare new promsie come per un normale oggetto 
+        la promise deve eseguire una funziona ovvero resolve o reject 
+        */
+
+        // - 7.1 ) creazione promise sintassi base 
+        // let nuovaPromise = new Promise();
+
+        // - 7.2 ) creazione promise sintassi esempio 
+        let nuovaPromise2 = new Promise((resolve, reject) => {
+            resolve("Success!");
+        });
+
+
+        // Creazione promise personalizzata 
+
+        // let timeoutPromise = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('Success!');
+        //     }, 2000);
+        // });
+
+
+
+
+        function timeoutPromise(message, interval) {
+            return new Promise((resolve , reject) => {
+                if (message === '' || typeof message !== "string") {
+                    // -  8) Rifuitare una promise : 
+                    // per rifuitare una promise ci basta usare il metodo reject  in questo caso quando entrara nel reject , la promise sara rifiutata 
+                    // e l'errore sara gestito dal metodo catch
+                    reject("Message is empty or not a string");
+                } else if (interval < 0 || typeof interval !== 'number') {
+                    reject("Interval is negative or not a number");
+                } else {
+                    setTimeout(function () {
+                        resolve(message);
+                    }, interval);
+                }
+            });
+        }
+
+        timeoutPromise("Hello there!", 1000)
+            .then(message => alert(message))
+            // - 5) Risposta in caso di fallimento : 
+            // la risposta della promise in questo caso e gestiata tramite catch nel caso in cui 
+            // la promise entri nel metodo reject e successivamente entrera nel catch 
+            .catch(e => console.log("Error : " + e));
+
+
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <!--   20 - funzioni Async e parametri Await  -->
+
+    <!-- 
+    1) Async
+    2) Await
+    3) Riscriviamo le promise con async e await 
+    4) Come funzione
+    5) gestire gli errori try{}catch(e){}
+    6) Promise.all()*
+    7) Async e awaait nelle classi*
+
+
+
+
+    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises );
+
+    
+ -->
+
+
+
+    <button id="primo"> primo</button>
+    <button id="secondo"> secondo</button>
+
+
+    <script>
+        /*
+        - 1) Async : 
+        async si mette davanti alle funzioni , e ci permette di rendere le funzioni asincrone
+        e il risultato del ritorno sara una promise , e per risolvere la promise ci 
+        bastare fare il then() 
+        */
+
+        async function hello() {
+            return 'hello';
+        }
+
+        console.log(hello());
+
+        hello
+            .then((value) => {
+                console.log(`value : ${value}`);
+            })
+
+        // sintassi Es 6 : 
+        // hello
+        //     .then(console.log)
+
+
+
+        // sintassi Es 6 async : 
+        let prova = async () => { return 'hello' }
+        console.log(prova());
+
+        /*
+         - 2) Await : 
+         await lo usiamo quando stiamo aspettando il risultato di una promise , 
+         async : per indicare che la funzione e asyncrona e ritorna una promise 
+         await : per indicare che greeting e uguale ad un valore che stiamo aspettando ,
+         inoltre await blocca l'esecuzione del codice che segue finche il valore non viene ritornato  
+          */
+        async function hello() {
+            return greeting = await Promise.resolve("hello");
+        }
+
+
+        //  Trasformare il codice asincrono in async e await 
+        /* 
+        - 3) Riscriviamo le promise con async e await 
+        codice asincrono : 
+        fetch("img/universe.jpg")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Http error! status  ${response.status}`)
+                } else {
+                    return response.blob();
+                }
+            })
+            .then(myBlob => {
+                let objectUrl = URL.createObjectURL(myBlob);
+                let image = document.createElement('img');
+                image.src = objectUrl;
+                document.body.appendChild(image);
+            })
+            .catch(e => {
+                console.error(` There has been a problem with your fetch operation : ${e.message}`);
+            });
+            */
+
+        // - 4) Come funzione
+        // funzione con async e await 
+        async function myFetch() {
+            let response = await fetch("img/universe.jpg");
+            let myBlob = await response.blob();
+
+            let objectUrl = URL.createObjectURL(myBlob);
+            let image = document.createElement('img');
+            image.src = objectUrl;
+            document.body.appendChild(image);
+        }
+
+        myFetch().catch((e) => {
+            console.error(` There has been a problem with your fetch operation : ${e.message}`);
+        });
+
+
+        /* - 5) gestire gli errori try{}catch(e){} : 
+        essendo codice sincrono possiamo gestire il gli errori con il blocco try catch
+        */
+
+        async function myFetch() {
+            try {
+                let response = await fetch("img/universe.jpg");
+                let myBlob = await response.blob();
+
+                let objectUrl = URL.createObjectURL(myBlob);
+                let image = document.createElement('img');
+                image.src = objectUrl;
+                document.body.appendChild(image);
+            } catch (e) {
+                console.error(` There has been a problem with your fetch operation : ${e.message}`);
+            };
+        }
+
+        myFetch();
+
+
+
+
+
+        //  fermo al minuto 10:45 da url (https://www.youtube.com/watch?v=Y-4EkRBzGRc&list=PLP5MAKLy8lP9FUx06-avV66mS8LXz7_Bb&index=21      )
+
+
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>

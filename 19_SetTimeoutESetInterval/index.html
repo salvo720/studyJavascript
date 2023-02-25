@@ -22,7 +22,6 @@
 <body>
 
     <!--   19 - Set Timeout e Set Interval  -->
-    <!--   19_SetTimeoutESetInterval  -->
 
     <!-- 
     1) setTimeout (funzione , tempo di attessa ) e clearTimeout()
@@ -43,7 +42,7 @@
  <button id="primo"> primo</button>
  <button id="secondo"> secondo</button>
     
-    <p id="demo"> Orologio : </p>
+    <p id="demo"> Orologio : <span id="orologio"></span> </p>
 
 
     <script>
@@ -64,8 +63,8 @@
         function displayTime() {
             let date = new Date();
             console.log(date);
-            let time = date.toLocaleDateString();
-            document.getElementById('demo').textContent = time;
+            let time = date.toLocaleTimeString();
+            document.getElementById('orologio').textContent = time;
         }
 
         const createClock = setInterval(displayTime, 1000) // nel setInterval il numero in millisecondi indica ogni quanto eseguire qullo passato al setInterval 
