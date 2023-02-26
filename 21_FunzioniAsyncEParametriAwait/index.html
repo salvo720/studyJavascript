@@ -60,7 +60,7 @@
 
         console.log(hello());
 
-        hello
+        hello()
             .then((value) => {
                 console.log(`value : ${value}`);
             })
@@ -147,11 +147,73 @@
 
         myFetch();
 
+        /*
+        - 6) Promise.all()* :
+        il metodo promise.all() veien usato quando abbimo piu promise e accetta come parametro un array di tipo promise 
+        ovverro composto solo da promise , viene usato per gestire tutte le promise con un unico await , guardo il codice sotto :
+        il codice sotto e solo di esempio non serve che worki 
+        */
+
+        // /*
+        async function GetAllPromise() {
+            const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+            const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
+            const fetchPromise3 = fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+
+            let values = await Promise.all([fetchPromise1, fetchPromise2, fetchPromise3]);
+
+            let descText1 = values[0];
+            let descText2 = values[1];
+            let descText3 = values[2];
 
 
+            let para1 = document.createElement('p');
+            let para2 = document.createElement('p');
+            let para3 = document.createElement('p');
+
+            para1.textContent1 = descText1;
+            para1.textContent2 = descText2;
+            para3.textContent3 = descText3;
+            
+            document.body.append(para1)
+            document.body.append(para2)
+            document.body.append(para3)
+        }
+
+        GetAllPromise().catch((error) => {
+            console.error(`Failed to fetch: ${error}`)
+        });
+        // */
 
 
-        //  fermo al minuto 10:45 da url (https://www.youtube.com/watch?v=Y-4EkRBzGRc&list=PLP5MAKLy8lP9FUx06-avV66mS8LXz7_Bb&index=21      )
+        /* 
+        - 7) Async e awaait nelle classi* : 
+        async e await possono essere usati anche nel costruttore delle classi non camia nulla 
+        */
+
+        class Person {
+            constructor(first , last ,age,gender ,interest){
+                this.name = { first, last }
+                this.age = age
+                this.gender = gender
+                this.interest = interest
+            }
+
+            // metodo asincrono della classe 
+            async greeting (){
+                return await Promise.resolve(` Hi! i am ${this.name.first }`);
+            }
+
+            // metodo sincrono
+            farewall(){
+                console.log(`${this.name.first} has left the building . bye for now!`);
+            }
+        }
+
+        let han = new Person('Han','Solo',25,'male',['Smuggling']);
+
+
+        //  fermo  al minuto 10:45 da url (https://www.youtube.com/watch?v=Y-4EkRBzGRc&list=PLP5MAKLy8lP9FUx06-avV66mS8LXz7_Bb&index=21 )
 
 
     </script>
