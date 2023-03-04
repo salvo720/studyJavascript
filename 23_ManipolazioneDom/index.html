@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <!--   23 - Manipolazione Dom  -->
+
+    <!-- 
+    1) Window e DOM 
+    2) Prendere elementi Del Dom 
+    3) creare e aggiungere nuovi nodi  
+    4) Muovere e Eliminare elementi 
+    5) Manipolare lo stile 
+
+    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction );
+
+    ---------------------------------------------------
+    - 1) Window e DOM :
+    Ecco cosa possiamo prendere tramite le web api : 
+    1) il document : prendendo il document possiamo andare a cambiare gil elemnti html o aggiungerne altri 
+    2) la window : la gradezza del viewport della tab , possiamo andare a prendere e modificare l'altezza , la larghezza ecc ..
+    3) il navigator : il navigator e come se fosse una cosa astratta , dal navigator possiamo andare a prendere elementi come la lingua preferita e le preferenze 
+
+    il Dom e il document object model , ovvero la gerarchia dei nodi proveninti dal nostro file html  
+    un nodo del Dom puo contenere :
+    1) Root node : e il tag Html ed e la radice di tutto 
+    2) Child node : un nodo dentro un altro ad esempio dal nodo html i child node sono i nodi : head e body 
+    3)  Descendent node : un nodo dentro un altro , ad esempio nella struttura Html > Body > div :
+      3.1) HTML E IL NODO ROOT  , 
+      3.2) BODY e il nodo child di Html 
+      3.3) DIV e il descentant di Html e child di body 
+    4) Parent node : un nodo dentro un altro , e da quello dentro saliamo verso il nodo padre 
+    o di livello superiore , ad esempio HTML e il parent di Body
+    5) Sibling node : i nodi si possono definire siblings quando sono sullo stesso livello ad 
+    esempio nella struttura  Html > body > div = p :
+    div e p sono siblings o fratelli eprche sono sullo stesso livello 
+
+
+   
+
+
+
+ -->
+
+
+
+    <button id="bottone" class="prova"> Bottone </button>
+    <div class="prova">secondo</div>
+    <span class="prova"> secondo</span>
+
+
+    <script>
+        /*
+        -  2) Prendere elementi Del Dom 
+        */
+
+        let x = document.getElementById('bottone'); // restituisce solo 1 elemento 
+
+        // usando il query selector possiamo usare il # per gli id e il . per le classi 
+        // , quando non vengono usati indica che stiamo usando un tag html 
+        let y = document.querySelector('button'); // restituisce solo 1 elemto 
+        let z = document.querySelector('#bottone');
+        let k = document.querySelector('.prova');
+
+        let w = document.querySelectorAll('.prova'); // restituisce un array di elemnti 
+        console.log('w :',w)
+
+        let j = document.getElementsByClassName('prova'); // restituisce un array di elemnti 
+        console.log('j :',j)
+
+        // Creare nuovi nodi 
+        const div = document.querySelector('div');
+        const paragrafo = document.createElement('p');
+        paragrafo.textContent = "Elemento creato dinamicamente . ";
+        div.appendChild(paragrafo);
+
+
+
+
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>

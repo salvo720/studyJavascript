@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <!--   22 - Introduzione alle web api   -->
+
+    <!-- 
+    1) che cosa sono le web api 
+    2) quali sono i tipi di api : client side e server side 
+    3) javascript disinzioni delle 5 categorie 
+    4) cosa possono fare gli api
+
+    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction );
+
+    ---------------------------------------------------
+
+    - 1) che cosa sono le web api ? 
+    gli api sono come una presa della corrente e per fornire energia ad un apparecchio ,
+    ci basta attare la spina e la corrente arriva all'apparecchio , senza risistemare ogni volta i cavi , 
+    ma ci basta attarli 1 sola volta per andare . 
+    quindi qualcuno ha fatto una parte di lavoro e l'ha resa disponibile per tutti , tramite  un astrazione di molte cose 
+    in cui le persono gi altri sviluppatori possono attarsi . 
+
+
+
+    - 2) quali sono i tipi di api : client side e server side 
+    gli api possono essere di 2 tipi : browser o third party 
+    1) browser : sono api che sono presenti nel browser , e codice javascript che e stato 
+    scritto dentro il browser , ed e un piccolo layer sopra a javascript che ci permette di eseguire alcune cose ,
+    per questo con browser diversi alcune cose non possiamo farle perhce non dipendono da javascript ma da chi ha fatto il browser .
+    quindi sono api in cui ci attacchiamo attraverso il browser che utilizziamo.
+    2) third party : sono api che ci permettono di incorporare ad esempio twitter , si chiamano di terze parti perche abbiamo : 
+    1) l'utente che usa il browser 
+    2) il browser 
+    3) i servizi esterni che si possono integrare come ad esempio twitter 
+
+
+
+    - 3) javascript disinzioni delle 5 categorie 
+    javascript si puo dividere in 5 categorie e sono : 
+    1) Javascript : lingiaggio ad alto livello che usiamo quando scriviamo del codice 
+    2) Api Browser : che sono le funzionalita che sono construite all'interno del browser e 
+    ci aiutano a implementare delle funzionalita con piu sempilicata  
+    3) Third Party Api : gli api di terze parti sono : twitter , facebook , ecc .... , e li usaimo per comunicare con le loro applicazioni 
+    4) Le librerie : ad esempio jquery , le librerie sono un insieme di file e di funzione , jquery andava a rendere il lavoro sul Dom per la 
+    modifica dell'Html e lo stile con delle funzioni piu semplici e veloci rispetto a javascript , oggi si puo fare tutto in javascript . 
+    le librerie sono un insieme di funzioni e file che ci aiutano a non riscrivere ogni volta lo stesso codice ma ci rifacciamo alle librerie
+    5) Framework : sono delle nuove tecnologie , a parte che si basano su javascript e molto spesso fanno un pacchetto comprensivo con javascript html , css . 
+    che combina piu cose per costrure da 0 delle applicazioni 
+
+
+
+    - 4) cosa possono fare gli api
+    gli api possono fare : 
+    1) api per manipolare il documento : che inizia con document.querySelector() e poi va a
+    creare gli elementi delle immagini o div , quando fanno un appendChield 
+    2) api that fetch data from server : quando usiamo la funzione fetch e xmlrequest 
+    3) api per manipolare il docuemnto : come ad esempio canva o WebGL
+    4) AudioEVideo : 
+    5) device api : 
+    6)  client-side storage api : 
+
+
+    
+    esempio comuni api third party : maps , twitter , telegram , youtube , twilio (per mandare sms ed mms )
+    Nota bene : gli api si basano tutti sugli oggetti , ad esempio se dobbiamo andare a lavorare sul documento ,
+    l'entry point e usare l'oggetto document , la spina e l'oggetto document
+
+    alcuni api possono gestire i cambi di stato , codice di esempio : 
+
+            // play/pause audio
+        playBtn.addEventListener('click', () => {
+        // check if context is in suspended state (autoplay policy)
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+
+        // if track is stopped, play it
+        if (playBtn.getAttribute('class') === 'paused') {
+            audioElement.play();
+            playBtn.setAttribute('class', 'playing');
+            playBtn.textContent = 'Pause'
+            // if track is playing, stop it
+        } else if (playBtn.getAttribute('class') === 'playing') {
+            audioElement.pause();
+            playBtn.setAttribute('class', 'paused');
+            playBtn.textContent = 'Play';
+        }
+        });
+
+        // if track ends
+        audioElement.addEventListener('ended', () => {
+        playBtn.setAttribute('class', 'paused');
+        playBtn.textContent = 'Play'
+        });
+
+ -->
+
+
+
+    <button id="primo"> primo</button>
+    <button id="secondo"> secondo</button>
+
+
+    <script>
+      
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>
