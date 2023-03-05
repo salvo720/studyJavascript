@@ -62,8 +62,8 @@
 
 
     <button id="bottone" class="prova"> Bottone </button>
-    <div class="prova">secondo</div>
-    <span class="prova"> secondo</span>
+    <div class="prova"></div>
+    <span class="prova"> </span>
 
 
     <script>
@@ -91,6 +91,43 @@
         paragrafo.textContent = "Elemento creato dinamicamente . ";
         div.appendChild(paragrafo);
 
+        // viene creato cosi perche tutto cio che e testo e un test node ,
+        // andiamo a creare un nuovo nodo di tipo testo , non andra a creare un nuovo nodo nella parte di html ma solo appenderlo 
+        const extraTesto = document.createTextNode('Altra parte di testo come node ');
+        paragrafo.appendChild(extraTesto)
+
+        // spostare e rimuovere i nodi 
+        // appendendo un elemnto gia selezionato da un altra parte lo spostiamo 
+        document.body.appendChild(paragrafo);
+        // paragrafo.removeChild(extraTesto)
+        // extraTesto.remove()
+
+        // manipolare gli stili
+        // tutte le propieta css con - come ad esempio background-color , visto che usiamo la dot Notation 
+        // diventato camel case e perdono il -  , e tutti i valori vanno tra le virgolette 
+        //  ad esempio :  backgroundColor =' black'
+        /*
+        paragrafo.style.color='red';
+        paragrafo.style.backgroundColor='black';
+        paragrafo.style.padding='10px';
+        paragrafo.style.textAlign='center';
+        */ 
+
+        // aggiungere gli attributi 
+        // per evitare di dover usare javascript per scrivere regole css , 
+        // possiamo creare le classi come css e aggiungerle agli elementi da javascript 
+        // e consigliabile usare le classi css ed il set attribute da javascript rispetto a modificare il css da javascript 
+        // perche cosi il codice e riutilizzabile , o ad esempio se vogliamo tornare indietro , in con le classi css e javascript 
+        // che le aggiunge ci basta togliere la classe , se usiamo javascript per modificare il css dobbiamo modificarle tutte 
+        paragrafo.setAttribute('class','modificaStili');
+       
+        // possiamo anche usare degli attributi personalizzati 
+        // se usiamo un elemento che non esiste javascript sa che e un attributo 
+        // personalizzato e lo aggiunge 
+        paragrafo.setAttribute('data-value','ciao');
+        // prendere elementi personalizzati 
+       console.log( paragrafo.getAttribute('data-value'));
+
 
 
 
@@ -109,3 +146,5 @@
 
 
 </html>
+
+

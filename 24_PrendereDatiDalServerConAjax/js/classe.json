@@ -1,0 +1,29 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "phone": "+1 555-1234",
+            "address": {
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "CA",
+                "zip": "12345"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "phone": "+1 555-5678",
+            "address": {
+                "street": "456 Maple Ave",
+                "city": "Othertown",
+                "state": "NY",
+                "zip": "67890"
+            }
+        }
+    ]
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- l'attributo lang del tag html viene usato per essere indicizzato dal motore di ricerca per la lingua  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Mills">
+    <meta name="description" content="The Mdn Learning area aims to provide 
+    complete beginners to the web with all they need to know to get 
+    started with developing a website and applications ">
+
+    <!--  Differenza tra titolo head e body : titolo dell'head  -->
+
+    <!-- link per l'icon  -->
+    <link rel="shortcut icon" href="./favicon/faviconStar.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <!--   24 - Prendere dati dal server con Ajax  -->
+
+    <!-- 
+    1) Introduzione
+    2) L'arrivo di ajax 
+    3) richieste xml  
+    4) richieste fetch 
+
+    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction );
+
+    ---------------------------------------------------
+    
+
+    1) Introduzione 
+    2) L'arrivo di ajax 
+
+
+    prima dello sviluppo asincrono c'era un problema con html , la pagina restituiva i dati 
+    e i dati erano fissi , non si aggiornavano in tempo reale , ad esempio in una pagina live 
+    delle partite , juventus - inter  la pagina ci mostra il tempo reale a quanto sta andando il cronometro 
+    ma nel caso di un gol in tempo reale la pagina non poteva mostrarlo e per vederlo dovevamo aggiornare la pagina 
+    , con l'arrivo di ajax la situazione cambia perche noi facciamo la nostra richiesta della pagina tramite l'http 
+    la pagina ci arriva ma vengono mandate delle richieste http per sapere se i gol sono cambiati , e non dover ricaricare la 
+    pagina per interno ma solo piccoli pezzi alla volta , cosi migliara l'esperienza utente , ovvero in background vengono aggirnato piccoli pezzi della pagina , 
+    adesso funziona tutto cosi , quindi non ci serve aggironare la pagina per vedere gli aggiornamenti 
+
+
+    ajax : significa asycronus javascripot and xml , sono delle chiamate asincrone 
+
+
+    abbiamo 2 tipi di chiamte ajax : 
+    1) la richeista xml 
+    2) i fetch 
+
+ -->
+
+
+
+    <button id="bottone" class="prova"> Bottone </button>
+    <div class="prova"></div>
+    <span class="prova"> </span>
+
+
+    <script>
+  
+
+    </script>
+
+
+    <!-- {{-- jquery 3.6 cdn --}} -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- {{-- bootstrap 4 js cdn  --}} -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- @yield('scripts') -->
+    <!-- <script src="./07_Dates_DateFormats.js"></script> -->
+
+</body>
+
+
+</html>
