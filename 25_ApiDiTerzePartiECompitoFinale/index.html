@@ -17,35 +17,92 @@
 
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
+    <!-- js e css per l'api mapquest  -->
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css">
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 </head>
 
 <body>
-    <!--   24 - Prendere dati dal server con Ajax  -->
+    <!--   25 - Api di terze parti  -->
 
     <!-- 
-    1) Window e DOM 
-    2) Prendere elementi Del Dom 
-    3) creare e aggiungere nuovi nodi  
-    4) Muovere e Eliminare elementi 
-    5) Manipolare lo stile 
+    1) Quali sono gli api di terze parti ?
+    2) Compito finale , dal sito di cocktail DB leggere la documentazione , e mandare a schermo 
+    le immagini e al click sull'immagine andare a su un altra pagina con le info del cocktail 
+  
 
-    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction );
+    Note Docs : Mozzilla firefox ( https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs );
 
     ---------------------------------------------------
     
+
+    -   1) Quali sono gli api di terze parti ?
+    gli api di terze parti sono servizi esterni che ci mettono a dispozione l'accesso alla 
+    loro applicazione in qualche modo per poterlo poi incorporare nel nostro sito , quoindi sono servizi 
+    di altri per migliorare la nostra applicazione 
+
+    molti api richiedono l'uso degli api key , che si ottengono registrandosi a chi fornisce l'api 
+    , in genere si trovano gli api gratuiti , ma possono essere anche a pagamento , ad esempio newsApi 
+    e un api gratuita , ma solo di test usando 
+    newsApi link : https://newsapi.org/
+    rapidApi link : https://rapidapi.com/
+
  -->
 
 
+    <div id="map"></div>
 
-    <button id="bottone" class="prova"> Bottone </button>
-    <div class="prova"></div>
-    <span class="prova"> </span>
+    <div class="concktailContainer">
+        <div class="cocktails"></div>
+    </div>
 
 
     <script>
-  
+        /*
+        commentato perche genera un errore perche manco le apikey 
+        let map = L.mapquest.map('map',{
+            center : [53,-2],
+            layers : L.mapquest.tileLayer('map'),
+            zoom:12
+        });
+        */
+        /*
+            2) Compito finale , dal sito di cocktail DB leggere la documentazione , e mandare a schermo 
+            le immagini e al click sull'immagine andare a su un altra pagina con le info del cocktail 
+        */
+        let cocktails = document.querySelector(".cocktails");
+        let urlCocktailDb = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
+        fetch(urlCocktailDb)
+            .then(response => response.json())
+            .then(json => {
+                console.log("json ", json.drinks)
 
+                json.drinks.forEach(drink => {
+                    let a = document.createElement("a");
+                    let dd = document.createElement("dd");
+                    let ddMain = document.createElement("dd");
+                    let dt1 = document.createElement("dt");
+                    let dt2 = document.createElement("dt");
+                    let img = document.createElement("img");
+
+                    img.src = drink.strDrinkThumb
+                    a.href="#";
+                    img.height = 175;
+                    img.width = 260;
+                    dt1.textContent = drink.idDrink + " " + drink.strDrink + " " + drink.strAlcoholic
+                    dt2.textContent = img.alt = drink.strDrink
+                    a.appendChild(img);
+                    dd.appendChild(a);
+                    ddMain.appendChild(dt1);
+                    ddMain.appendChild(dt2);
+                    ddMain.appendChild(dd);
+                    cocktails.appendChild(ddMain);
+                });
+
+            });
     </script>
+
+
 
 
     <!-- {{-- jquery 3.6 cdn --}} -->

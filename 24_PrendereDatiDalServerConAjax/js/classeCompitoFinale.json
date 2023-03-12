@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "descrizione": "Torta di mele",
+            "img": "https://cdn.ilclubdellericette.it/wp-content/uploads/2020/03/torta-di-mele-senza-lievito.jpg",
+            "prezzo":10
+        },
+        {
+            "id": 2,
+            "descrizione": "Universo",
+            "img": "https://th.bing.com/th/id/R.6aea528cbe259810e30644a67587ec89?rik=qqNosTLG%2bIwsnw&riu=http%3a%2f%2filbolive.unipd.it%2fsites%2fdefault%2ffiles%2f2018-09%2fadobestock_105677222.jpg&ehk=zkVYmeYF6mN6o5rDT1eCPTrKIMiSbEwpj284VUe4lfs%3d&risl=&pid=ImgRaw&r=0",
+            "prezzo":10
+        },
+        {
+            "id": 3,
+            "descrizione": "Ufo in volo",
+            "img": "https://th.bing.com/th/id/OIP.Q4vs7fRsa2HA8anHAUwPPAHaEZ?pid=ImgDet&rs=1",
+            "prezzo":10
+        }
+    ]
+}

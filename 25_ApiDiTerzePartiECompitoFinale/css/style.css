@@ -1,5 +1,5 @@
 div{
-    background-color: grey;
+    /* background-color: grey; */
 }
 
 
@@ -14,4 +14,25 @@ div.prova{
     background-color: green;
     text-align: center;
     padding: 10px;
+}
+
+.concktailContainer{
+    display :grid;
+    grid-template-columns: repeat(1fr , 50px);
+    column-gap: 10;
+
+}
+
+dd{
+    display:inline-grid;
+}
+
+dt{
+    font-size: large;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    color:cornflowerblue;
+    letter-spacing:1px;
+    text-indent:5px;
+    white-space:5px; 
 }
